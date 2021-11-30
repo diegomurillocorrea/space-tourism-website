@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 
-const App = ({ Component, pageProps }) => {
+const _app = ({ Component, pageProps }) => {
     return (
         <Component
             {...pageProps}
@@ -8,4 +8,4 @@ const App = ({ Component, pageProps }) => {
     );
 };
 
-export default App;
+export default _app;
