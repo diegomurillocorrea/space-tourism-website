@@ -11,6 +11,10 @@ module.exports = {
           DEFAULT: "#D0D6F9",
         },
       },
+      fontFamily: {
+        bellefair: ["Bellefair", "serif"],
+        barlow: ["Barlow Condensed", "sans-serif"],
+      }
     },
   },
   variants: {
