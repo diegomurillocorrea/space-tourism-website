@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-const Layout = ({ title, children }) => {
+const Layout = ({ children, title, classes }) => {
     return (
         <>
             <Head>
@@ -25,7 +25,7 @@ const Layout = ({ title, children }) => {
                 <meta property="twitter:description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
                 <meta property="twitter:image" content={``} />
             </Head>
-            <main>
+            <main className={classes}>
                 {children}
             </main>
         </>
