@@ -1,10 +1,18 @@
 import Icon from "./Icon";
 import Button from "./Button";
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import navBarLinks from "../lib/navBarLinks";
 
-const Links = ({ links }) => {
+const Links = ({ link, number, linkName }) => {
     return (
-        <div></div>
+        <ul className="font-barlow text-white">
+            <li>
+                <a href={link} className="text-lg">
+                    <span className="font-bold">{number}</span> {linkName.toUpperCase()}
+                </a>
+            </li>
+        </ul>
     );
 };
 
@@ -20,7 +28,7 @@ const NavBar = ({ navBarColor }) => {
                     </svg>
                 </Icon>
             </section>
-            <section>
+            <section className="z-10">
                 <Button onClick={() => setIsOpen(!isOpen)}>
                     <Icon classes="w-7 fill-current text-light-blue">
                         {isOpen ?
@@ -38,6 +46,25 @@ const NavBar = ({ navBarColor }) => {
                     </Icon>
                 </Button>
             </section>
+            <AnimatePresence>
+                {isOpen ?
+                    (<motion.section
+                        initial={{ opacity: 0, x: 350 }}
+                        animate={{ opacity: 1, x: 100 }}
+                        exit={{ opacity: 0, x: 350 }}
+                        transition={{ duration: 0.5 }}
+                        className="fixed bg-black w-full h-screen px-5 flex flex-col justify-center"
+                    >
+                        {navBarLinks.map(({ link, number, linkName }) => (
+                            <Links
+                                link={link}
+                                number={number}
+                                linkName={linkName}
+                                key={number}
+                            />))}
+                    </motion.section>)
+                    : ""}
+            </AnimatePresence>
         </nav>
     );
 };
